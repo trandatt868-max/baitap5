@@ -1,0 +1,39 @@
+<%
+    const price = Number(product.price ?? product.unit_price ?? 0);
+    const promotion = Number(product.promotion_price ?? product.salePrice ?? 0);
+    const onSale = promotion > 0 && promotion < price;
+    const money = value => `${new Intl.NumberFormat('vi-VN').format(value)}đ`;
+    const image = product.image
+        ? (product.image.startsWith('/') || /^https?:\/\//i.test(product.image)
+            ? product.image : '/image/product/' + encodeURIComponent(product.image))
+        : '/image/product-placeholder.svg';
+%>
+<article class="single-item product-card">
+    <div class="single-item-header">
+        <img src="<%= image %>" alt="<%= product.name %>" loading="lazy" width="263" height="250"
+            onerror="this.onerror=null;this.src='/image/product-placeholder.svg'">
+    </div>
+    <% if (onSale || product.tag) { %>
+        <div class="ribbon-wrapper"><span class="ribbon <%= onSale ? 'sale' : '' %>"><%= onSale ? 'Sale' : product.tag %></span></div>
+    <% } %>
+    <div class="single-item-body">
+        <h3 class="single-item-title"><%= product.name %></h3>
+        <p class="single-item-price">
+            <% if (onSale) { %>
+                <del class="flash-del"><%= money(price) %></del>
+                <span class="flash-sale"><%= money(promotion) %></span>
+            <% } else { %>
+                <span><%= money(price) %></span>
+            <% } %>
+        </p>
+    </div>
+    <div class="single-item-caption">
+        <button class="add-to-cart" type="button" aria-label="Buy <%= product.name %>" title="Buy now">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        </button>
+        <details class="product-details">
+            <summary class="beta-btn">Details <i class="fa fa-angle-right" aria-hidden="true"></i></summary>
+            <p><%= product.description || product.name %></p>
+        </details>
+    </div>
+</article>

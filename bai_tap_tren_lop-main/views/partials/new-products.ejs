@@ -1,0 +1,12 @@
+<section class="beta-products-list" aria-labelledby="new-products-title">
+    <h2 id="new-products-title">New Products</h2>
+    <p class="beta-products-details"><%= products.length %> styles found</p>
+    <div class="product-list">
+        <% if (products.length === 0) { %>
+            <p class="empty-products">No new products found.</p>
+        <% } %>
+        <% products.forEach(product => { %>
+            <%- include('product-card', { product }) %>
+        <% }) %>
+    </div>
+</section>

@@ -1,0 +1,33 @@
+<% const currentPage = locals.page || 'home'; %>
+<% const activePage = locals.active || currentPage; %>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= locals.title || 'My Shop' %></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap">
+    <link rel="stylesheet" href="/assets/dest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/dest/css/style.css">
+    <link rel="stylesheet" href="/assets/dest/css/huong-style.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('partials/header', { active: activePage }) %>
+
+    <% if (currentPage === 'about') { %>
+        <%- include('pages/about') %>
+    <% } else if (currentPage === 'contact') { %>
+        <%- include('pages/contact') %>
+    <% } else { %>
+        <%- include('pages/home') %>
+    <% } %>
+
+    <%- include('partials/footer') %>
+    <%- include('partials/footer-scripts') %>
+    <% (locals.scripts || []).forEach(function (script) { %>
+        <%- include('partials/page-scripts/' + script) %>
+    <% }) %>
+</body>
+</html>

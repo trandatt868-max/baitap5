@@ -1,0 +1,22 @@
+<div class="rev-slider">
+	<div class="fullwidthbanner-container">
+		<div class="fullwidthbanner">
+			<div class="bannercontainer">
+				<div class="banner">
+					<ul>
+						<% banners.forEach(function (b, i) { %>
+						<% var last = (i === banners.length - 1); %>
+						<li data-transition="boxfade" data-slotamount="20" class="active-revslide<%= last ? ' current-sr-slide-visible' : '' %>" style="width: 100%; height: 100%; overflow: hidden; <%= last ? 'visibility: inherit; opacity: 1; z-index: 20;' : 'z-index: 18; visibility: hidden; opacity: 0;' %>">
+							<div class="slotholder" style="width:100%;height:100%;">
+								<div class="tp-bgimg defaultimg" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" data-src="/image/slide/<%= b.image %>" style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('/image/slide/<%= b.image %>'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;">
+								</div>
+							</div>
+						</li>
+						<% }) %>
+					</ul>
+				</div>
+			</div>
+			<div class="tp-bannertimer"></div>
+		</div>
+	</div>
+</div><!-- slider -->

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bang Diem Cua Em</title>
+    <link rel="stylesheet" href="bai1.css">
+</head>
+<body>
+
+    <div class="bang-diem-box">
+        <h1>BANG DIEM CUA EM</h1>
+
+        <div class="input-row">
+            <span>Semester1:</span>
+            <input type="number" id="text_1" min="0" max="10" step="any">
+        </div>
+
+        <div class="input-row">
+            <span>Semester2:</span>
+            <input type="number" id="text_2" min="0" max="10" step="any">
+        </div>
+
+        <div class="input-row">
+            <span>Year:</span>
+            <select id="select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <div class="input-row">
+            <span>Summarise:</span>
+            <input type="text" id="result" readonly>
+        </div>
+
+        <!-- Dòng hiển thị xếp loại "Hoc sinh gioi" -->
+        <div id="display" aria-live="polite"></div>
+
+        <div class="btn-group">
+            <button type="button" onclick="myFunction1()">OK</button>
+            <button type="button" onclick="myFunction2()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="bai1.js"></script>
+</body>
+</html>
